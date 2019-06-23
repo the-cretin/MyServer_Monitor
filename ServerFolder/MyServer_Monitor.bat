@@ -24,18 +24,9 @@ mode con: cols=240 lines=30
 :: This makes it possible to reboot the server remotely using rcon save/shutdown.  Server will automatically restart.
 
 :: ------------------------
-:: Known Issue 1:
+:: Known Issue:
 :: ------------------------
 :: Stationeers rarely ever crashes but if you want this to be able to automatically restart from a crash you need to disable Dr.Watson Error Reporting (for Windows).
-
-:: ------------------------
-:: Known Issue 2:
-:: ------------------------
-:: (cmdbug) Some versions of Windows might add a prefix name to your cmd window's title.  If, for example, all your cmd windows start with 'Administrator:' then set cmdbug=1.
-
-:: Alternatively -> you can choose to use a legacy cmd.exe to avoid the bug.
-
-:: Alternate alternative -> if you wish to fix the cmd bug the hard way (not recommended) visit: https://serverfault.com/questions/35561/how-to-remove-administrator-from-the-command-promt-title
 
 :: ------------------------
 :: Instructions: 
@@ -49,9 +40,7 @@ mode con: cols=240 lines=30
 
 :: Step 3: Set the name and path to your steamcmd script.
 
-:: Step 4: If your Windows OS is not tagging cmd window titles with Administrator: , skip this step.  If it is so, set cmdbug=1.
-
-:: Step 5: (Optional) create a shortcut to this file and place it in %AppData%\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\
+:: Step 4: (Optional) create a shortcut to this file and place it in %AppData%\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\
 ::	This will make the file start automatically when the computer starts.
 
 :::::::::
@@ -74,9 +63,6 @@ setlocal enableDelayedExpansion
 :: The name and location of your steam commands script
 	set _steamscript="C:\steamcmd\scripts\MyServer.cmd"
 
-:: Does your cmd window attach a username: to the titles?
-	set _cmdbug=0
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::					  CONFIG END					::
 ::													::
@@ -89,7 +75,7 @@ if %ERRORLEVEL%==1 call :error
 2>nul (
 	9>"%~f0.lock" (
 		set "_started=1"
-		call :main %_steampath% %_steamscript% %_launcher% %_cmdbug%
+		call :main %_steampath% %_steamscript% %_launcher%
 		endlocal
 		goto config
 	)
@@ -115,22 +101,12 @@ echo %~3
 echo %~1
 echo %~2
 echo.
-echo Server check in T-10 seconds.
-echo.
 timeout 10
 
 cls
 echo %_title:"=%
 echo.
-echo Killing launcher/server if it exists...
-echo.
-if %4==1 (
-	tasklist /v /fo table | findstr /i /c:"Administrator:  %_args:"=%"
-	taskkill /fi "windowtitle eq Administrator:  %_args:"=%" /t /f
-) else (
-	tasklist /v /fo table | findstr /i /c:"%_args:"=%"
-	taskkill /fi "windowtitle eq %_args:"=%" /t /f
-)
+echo This wait time is just to let all caches to be cleared, RAM to flush, background processes to get some action, etc.  A small wait between reboots is recommended.
 echo.
 echo Now would be a good time to close this application if you don't want it to restart.
 echo.
@@ -156,7 +132,7 @@ echo.
 echo Starting %~n3 and watching for crashes/restarts...
 echo.
 echo (%time%)
-start "%~n3 Launcher" /d %~p3 /w /min %~dpnx3 %_args%
+start "%~nx3" /d %~p3 /w /min %~dpnx3
 timeout 10
 
 cls

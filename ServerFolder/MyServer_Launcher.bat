@@ -1,5 +1,3 @@
-setlocal
-title %1
 :: Server Launcher for Server Monitor by: spunky#4088 (Discord)
 
 :: Notes:
@@ -9,10 +7,6 @@ title %1
 :: Once the server has been created, login to your server's rcon and make a save file.
 
 :: Once you have a save file, you must use the example for reboot rather then the example for server creation.
-
-:: Important:
-
-:: As the server is a 'child-process' of this launcher, this launcher has been designed to remain open while the server is running.  This makes it easy to kill and monitor the server.  Do not close the launcher window while the server is running.
 
 :: Instructions:
 
@@ -27,12 +21,12 @@ title %1
 start /w /min /abovenormal rocketstation_DedicatedServer.exe -batchmode -nographics -logFile "C:\ServerFolder\MyServer_log.txt" -gameport=27500 -updateport=27515 -autostart -worldtype=Moon -worldname=SaveName -basedirectory="C:\ServerFolder" -clearallinterval=21474836
 
 :: Example 2 (for reboots only, not for server creation):
-
 :: start /w /min /abovenormal rocketstation_DedicatedServer.exe -batchmode -nographics -logFile "C:\ServerFolder\MyServer_log.txt" -gameport=27500 -updateport=27515 -autostart -loadworld=SaveName -basedirectory="C:\ServerFolder" -clearallinterval=21474836
 
 :: Example 3 (using /affinity tag - recommended for assigning which cpu cores to use)
-:: Visit 
 :: start /w /min /abovenormal /affinity F0 rocketstation_DedicatedServer.exe -batchmode -nographics -logFile "C:\ServerFolder\MyServer_log.txt" -gameport=27500 -updateport=27515 -autostart -loadworld=SaveName -basedirectory="C:\ServerFolder" -clearallinterval=21474836
+
+:: How to calculate affinity masks: https://discordapp.com/channels/276525882049429515/392080751648178188/586694770483789824
 
 cls
 echo %~n0 is shutting down. 

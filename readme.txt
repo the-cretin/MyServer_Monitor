@@ -1,13 +1,15 @@
+MyServer_Monitor 1.1 by spunky#4088 (discord)  the_cretin (github)
+
 Hello,
 
-This package should have all you need to get your Stationeers Dedicated Server up and running quick including many instructions and explanations.  If you feel this product could be improved please feel free to fork the repository and send a pull request of find me @spunky#4088 (Discord)
+This package includes everything you need to get your Stationeers Dedicated Server up and running quickly and easily! If you feel this product could be improved please feel free to fork the repository and send a pull request of find me @spunky#4088 (Discord)
 
 Includes:
 
 ~ A Reboot/Crash monitor (Reboots is fine but please note that crash monitoring requires you to manually disable Dr.Watson Error Reporting on Windows for the server or it will hang at asking you if you "wish to report this problem to microsoft".
-~ A customized server launcher (designed specifically for the server monitor) with optional examples.
-~ A steamcmd script for automatic server creations and automatic server updates (sourced from Valve https://developer.valvesoftware.com/wiki/SteamCMD#Creating_a_script).
 ~ Batch rcon commands* (plus bonus powershell rcon commands if you prefer that).
+~ A steamcmd script for automatic server creations and automatic server updates (sourced from Valve https://developer.valvesoftware.com/wiki/SteamCMD#Creating_a_script).
+~ Server Creation/Server Reboot examples for the Launcher
 ~ Basic default.ini
 * batch rcon commands requires srcon.exe https://github.com/matjam/stationeersrcon/releases by: @matjam#0856 (Discord)
 
