@@ -86,11 +86,9 @@ if defined _started (
 	goto eof
 )
 exit
-:: endlocal & set _started=0
 
 :main
 	set _title=%~n3 monitor by spunky
-	set _args=%~n3 Launcher
 title %_title%
 cls
 echo %_title:"=%
@@ -132,7 +130,7 @@ echo.
 echo Starting %~n3 and watching for crashes/restarts...
 echo.
 echo (%time%)
-start "%~nx3" /d %~p3 /w /min %~dpnx3
+start "%~nx3" /d %~dp3 /w /min %~dpnx3
 timeout 10
 
 cls
