@@ -44,6 +44,8 @@ The four (4) files you need to get started are: MyServer_Monitor.bat, MyServer_L
 
 13. (Optional) Disable Dr.Watson Error Reporting in Windows for the rocketstationDedicatedServer.exe.  https://support.microsoft.com/help/188296/how-to-disable-or-enable-dr-watson-for-windows
 
+IMPORTANT: you MUST have start /w before rocketstationDedicatedServer.exe (as shown in the Launcher) for the monitor to work.
+
 Most of the files include easy setup and instructions.
 
 Don't forget to try my Backups Archiver! https://github.com/the-cretin/Stationeers-Backups-Archiver
